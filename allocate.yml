@@ -1,0 +1,15 @@
+---
+- hosts: local 
+  tasks:
+  - name: install shade 
+    pip: 
+     name: shade
+  - name: get some facts and then print them   
+    os_server_facts:
+      server: "*" 
+  - name: register variable 
+    debug: 
+      var: openstack_servers
+  - name: print stuff 
+    debug: 
+      msg: "{{ openstack_servers[1].name}}"
