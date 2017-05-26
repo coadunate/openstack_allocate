@@ -13,3 +13,9 @@
   - name: print stuff 
     debug: 
       msg: "{{ openstack_servers[1].name}}"
+
+  - name: allocate floating IP to named VM 
+    os_floating_ip: 
+      server: "{{ item.name }}" 
+    with_items: 
+    - "{{ openstack_servers }}" 
